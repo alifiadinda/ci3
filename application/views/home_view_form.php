@@ -27,7 +27,6 @@
     <br><br><br>
 
 	<div class="container">
-		<h1><?=$tipe?> Articel</h1>
 		<form method="post" class="form-horizontal" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="control-label col-sm-2">
@@ -51,6 +50,30 @@
 				</label>
 				<div class="col-sm-10">
 					<textarea name="content" class="form-control" required><?=isset($default['content'])? $default['content'] : ""?></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">
+					Penulis					
+				</label>
+				<div class="col-sm-10">
+					<textarea name="penulis" class="form-control" required><?=isset($default['penulis'])? $default['penulis'] : ""?></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">
+					Sumber					
+				</label>
+				<div class="col-sm-10">
+					<textarea name="sumber" class="form-control" required><?=isset($default['sumber'])? $default['sumber'] : ""?></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">
+					Lokasi Penulisan					
+				</label>
+				<div class="col-sm-10">
+					<textarea name="lokasi_penulisan" class="form-control" required><?=isset($default['lokasi_penulisan'])? $default['lokasi_penulisan'] : ""?></textarea>
 				</div>
 			</div>
 			<div class="form-group">

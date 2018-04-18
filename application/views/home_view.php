@@ -68,6 +68,9 @@
                   <font color="white">
                   <?php echo $key->judul_blog ?>
                 </a>
+                <br><br>
+                <a href='blog/edit/<?php echo $key->id_blog;?>' class='btn-btn-sm btn-info'>edit</a>
+                <a href='blog/delete/<?php echo $key->id_blog;?>' class='btn-btn-sm btn-danger'>Hapus</a>
               </td>
             </tr>
           </table>
@@ -75,6 +78,37 @@
       <?php endforeach ?>
     </div>
 
+     <div class="container">
+      <?php
+        echo form_open('blog/tambah', array('enctype'=>'multipart/form-data')); 
+       ?>
+
+     <!--  <table>
+        <tr>
+          <td><font color="white">Judul</font></td>
+          <td>:</td>
+          <td><input type="text" name="input_judul" value="<?php echo set_value('input_judul'); ?>"></td>
+        </tr>
+        <tr>
+          <td><font color="white">Content</font></td>
+          <td>:</td>
+          <td><input type="text" name="input_content" value=""></td>
+        </tr>
+        <tr>
+          <td><font color="white">Tanggal</font> </td>
+          <td>:</td>
+          <td><input type="date" name="input_tanggal" value=""></td>
+        </tr>
+        <tr>
+          <td><font color="white">Gambar</font></td>
+          <td>:</td>
+          <td><input type="file" name="input_gambar"></td>
+        </tr>
+        <tr> -->
+          <td colspan="3"><input type="submit" name="simpan" value="Tambah"></td>
+        </tr>
+      </table>
+    </div>
 
     <footer class="footer text-faded text-center py-5">
       <div class="container">
