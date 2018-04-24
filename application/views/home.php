@@ -49,6 +49,9 @@
             <li class="nav-item active px-lg-4">
               <a class="nav-link js-scroll-trigger" href="blog">BLOG</a>
             </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link js-scroll-trigger" href="blog">KATEGORI</a>
+            </li>
           </ul>
         </div>
       </div>

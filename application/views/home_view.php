@@ -49,12 +49,15 @@
             <li class="nav-item active px-lg-4">
               <a class="nav-link js-scroll-trigger" href="blog">BLOG</a>
             </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link js-scroll-trigger" href="blog">KATEGORI</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    
+     <center> <td colspan="3"><input type="submit" name="simpan" value="Create Artikel"></td> </center> <br><br>
 
     <div class="container text-center">
       <?php foreach ($artikel as $key): ?>
@@ -83,6 +86,27 @@
         echo form_open('blog/tambah', array('enctype'=>'multipart/form-data')); 
        ?>
 
+       <?php echo form_open( 'category/create', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+
+ <?php echo form_open( 'category/create', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+
+<div class="form-group">
+  <font color="white">
+   <label for="cat_name">Nama Kategori</label>
+   <input type="text" class="form-control" name="cat_name" value="<?php echo set_value('cat_name') ?>" required>
+   <div class="invalid-feedback">Isi judul dulu </div>
+ </font>
+</div>
+
+<div class="form-group">
+   <font color="white">
+   <label for="text">Deskripsi</label>
+   <input type="text" class="form-control" name="cat_description" value="<?php echo set_value('cat_description') ?>" required>
+   <div class="invalid-feedback">Isi deskripsinya dulu</div>
+ </font>
+</div>
+<button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button>
+
      <!--  <table>
         <tr>
           <td><font color="white">Judul</font></td>
@@ -105,7 +129,9 @@
           <td><input type="file" name="input_gambar"></td>
         </tr>
         <tr> -->
-          <td colspan="3"><input type="submit" name="simpan" value="Tambah"></td>
+          <br>
+         
+
         </tr>
       </table>
     </div>
