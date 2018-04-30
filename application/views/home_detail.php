@@ -49,6 +49,9 @@
             <li class="nav-item active px-lg-4">
               <a class="nav-link js-scroll-trigger" href="../../blog">BLOG</a>
             </li>
+             <li class="nav-item active px-lg-4">
+              <a class="nav-link js-scroll-trigger" href="../../category">Kategori</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -85,6 +88,28 @@
               <?php echo $key->content; ?>
             </td>
           </tr>
+
+          <tr>
+            <td class="text-justify">
+              <font color="white">
+             Penulis: <?php echo $key->penulis; ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text-justify">
+              <font color="white">
+             Sumber: <?php echo $key->sumber; ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text-justify">
+              <font color="white">
+             Lokasi Penulisan: <?php echo $key->lokasi_penulisan; ?>
+            </td>
+          </tr>
+
         </table>
       </div>
       <?php endforeach ?>

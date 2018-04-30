@@ -12,14 +12,14 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">My Blog</a>
+          <a class="navbar-brand" href="#">Add Blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="myweb">Home</a></li>
-            <li><a href="myweb/profil">About</a></li>
+            <li><a href="home">Home</a></li>
+            <li><a href="about">About</a></li>
             <li class="active"><a href="blog">Blog</a></li>
-            <li><a href="teman">Friend</a></li>
+            <li><a href="category">Kategori</a></li>
           </ul>
         </div>
       </div>
@@ -78,7 +78,6 @@
 			</div>
 			<div class="form-group">
 		      <label class="control-label col-sm-2">Gambar :</label>
-		     
 		      <div class="col-sm-10">
 		        <span class="input-group-addon"><input type="file" required name="image" class="file"></span>
 		      </div><br>
@@ -87,6 +86,5 @@
 			<input class="btn btn-primary" type="submit" name="simpan" value="simpan">
 			</center>
 		</form>
-	</div>
 </body>
 </html>

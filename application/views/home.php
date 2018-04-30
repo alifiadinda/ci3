@@ -50,7 +50,7 @@
               <a class="nav-link js-scroll-trigger" href="blog">BLOG</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="blog">KATEGORI</a>
+              <a class="nav-link js-scroll-trigger" href="category">KATEGORI</a>
             </li>
           </ul>
         </div>
@@ -101,6 +101,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   </body>
 

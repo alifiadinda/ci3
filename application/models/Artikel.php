@@ -52,9 +52,10 @@ class Artikel extends CI_Model {
 			'tanggal_blog' => $this->input->post('input_tanggal'),
 			'content' => $this->input->post('input_content'),
 			'image' => $upload['file']['file_name'],
-			'penulis' => $this->input->post('penulis'),
-			'sumber' => $this->input->post('sumber'),
-			'lokasi_penulisan' => $this->input->post('lokasi_penulisan'),
+			'penulis' => $this->input->post('input_penulis'),
+			'sumber' => $this->input->post('input_sumber'),
+			'lokasi_penulisan' => $this->input->post('input_lokasi_penulisan'),
+			'id_cat' => $this->input->post('id_cat')
 		);
 
 		$this->db->insert('blog', $data);
@@ -76,4 +77,5 @@ class Artikel extends CI_Model {
 
 		return true;
 	}
+	
 }

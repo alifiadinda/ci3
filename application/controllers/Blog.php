@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Blog extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();		
+		
+		$this->load->model('category_model');
+	}
+
 	public function index()
 	{
 		$this->load->model('artikel');
@@ -20,20 +26,19 @@ class Blog extends CI_Controller {
 		public function tambah()
 	{
 		$this->load->model('artikel');
-		$data = array();
+		$data['categories'] = $this->category_model->generate_cat_dropdown();
 
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('input_judul','judul_blog','required',array('required' => 'isi %s, '));
 		$this->form_validation->set_rules('input_tanggal','tanggal_blog','required',array('required' => 'isi %s, '));
 		$this->form_validation->set_rules('input_content','content','required',array('required' => 'isi %s, '));
-		$this->form_validation->set_rules('input_gambar','image','required',array('required' => 'isi %s, '));
 		$this->form_validation->set_rules('input_content','content','required',array('required' => 'isi %s, '));
 		$this->form_validation->set_rules('input_penulis','penulis','required',array('required' => 'isi %s, '));
 		$this->form_validation->set_rules('input_sumber','sumber','required',array('required' => 'isi %s, '));
 		$this->form_validation->set_rules('input_lokasi_penulisan','lokasi_penulisan','required',array('required' => 'isi %s, '));
 
 		if($this->form_validation->run()==FALSE){
-			$this->load->view('home_view_form');
+			$this->load->view('form_tambah',$data);
 		}
 		else{
 			if ($this->input->post('simpan')) {
@@ -49,7 +54,7 @@ class Blog extends CI_Controller {
 
 	
 
-		$this->load->view('home_view_form', $data);
+	$this->load->view('form_tambah', $data);
 	}
 }
 
@@ -71,6 +76,9 @@ class Blog extends CI_Controller {
 
 		$this->load->view("home_view_form",$data);
 	}
+
+//Gunakan fungsi dari model untuk mengisi data dalam dropdown
+
 }
 
 /* End of file Blog.php */
