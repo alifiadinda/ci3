@@ -110,7 +110,10 @@
             </td>
           </tr>
 
-        </table>
+        </table><br><br><center>
+         <a href="<?php echo base_url(). 'blog/edit/' . $key->id_blog ?>" class="button" ><span class="fa fa-edit"></span> Edit</a>
+          <a href="<?php echo base_url(). 'blog/delete/' . $key->id_blog ?>" class="button" onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><span class="fa fa-trash"></span> Hapus</a>
+        </center>
       </div>
       <?php endforeach ?>
 

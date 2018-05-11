@@ -14,6 +14,30 @@ class Artikel extends CI_Model {
 		return $query->result();
 	}
 
+	 public function get_artikel_by_id($id)
+    {
+        $query = $this->db->get_where('blog', array('id_blog' => $id));
+        return $query->row();
+    }
+
+     public function get_artikel_by_slug($slug)
+        {
+
+             // Inner Join dengan table category
+            $this->db->select ( '
+                blog.*, 
+                categories.id as as_category_id, 
+                categories.cat_name,
+                categories.cat_description,
+            ' );
+            $this->db->join('categories', 'categories.id = categories.id_cat');
+            
+            $query = $this->db->get_where('blog', array('post_slug' => $slug));
+
+            // Karena datanya cuma 1, kita return cukup via row() saja
+            return $query->row();
+        }
+
 	public function get_default($id)
 	{
 		$data = array();
@@ -65,17 +89,14 @@ class Artikel extends CI_Model {
 		$query = $this->db->query('DELETE from blog where id_blog= '.$id_blog);
 		}
 
-	public function update($post, $id){
-		//parameter $id wajib digunakan agar program tahu ID mana yang ingin diubah datanya.
-		$judul_blog = $this->db->escape($post['judul_blog']);
-		$content = $this->db->escape($post['content']);
-		$tanggal_blog= $this->db->escape($post['tanggal_blog']);
-		$penulis = $this->db->escape($post['penulis']);
-		$sumber = $this->db->escape($post['sumber']);
-		$lokasi_penulisan = $this->db->escape($post['lokasi_penulisan']);
-		$sql = $this->db->query("UPDATE blog SET judul_blog = $judul_blog, tanggal_blog = $tanggal_blog,  content = $content, penulis = $penulis, sumber = $sumber, lokasi_penulisan = $lokasi_penulisan WHERE id_blog = ".intval($id));
-
-		return true;
-	}
+	   public function update($data, $id) 
+        {
+            if ( !empty($data) && !empty($id) ){
+                $update = $this->db->update( 'blog', $data, array('id_blog'=>$id) );
+                return $update ? true : false;
+            } else {
+                return false;
+            }
+        }
 	
 }

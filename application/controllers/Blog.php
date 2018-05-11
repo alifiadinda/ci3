@@ -64,21 +64,88 @@ class Blog extends CI_Controller {
 		redirect('blog');
 	}
 
-		public function edit($id){
-		$this->load->model("artikel");
-		$data['tipe'] = "Edit";
-		$data['default'] = $this->artikel->get_default($id);
 
-		if(isset($_POST['simpan'])){
-			$this->artikel->update($_POST, $id);
-			redirect("blog");
-		}
-
-		$this->load->view("home_view_form",$data);
-	}
 
 //Gunakan fungsi dari model untuk mengisi data dalam dropdown
-
+		public function edit($id = NULL)
+	{
+		$this->load->model('artikel');
+		$this->load->model('category_model');
+		$data['artikel'] = $this->artikel->get_artikel_by_id($id);
+		// Jika id kosong atau tidak ada id yg dimaksud, lempar user ke halaman blog
+		if ( empty($id) || !$data['artikel'] ) redirect('blog');
+		$data['categories'] = $this->category_model->generate_cat_dropdown();
+		// Kita simpan dulu nama file yang lama
+		$old_image = $data['artikel']->image;
+		// Kita butuh helper dan library berikut
+	    $this->load->helper('form');
+	    $this->load->library('form_validation');
+	    // Kita validasi input sederhana, sila cek http://localhost/ci3/user_guide/libraries/form_validation.html
+		$this->form_validation->set_rules('judul_blog', 'judul_blog', 'required',
+			array(
+				'required' 		=> 'Isi %s donk, males amat.'
+			));
+	    // Cek apakah input valid atau tidak
+	    if ($this->form_validation->run() === FALSE)
+	    {
+	        $this->load->view('home_view_form', $data);
+	    } else {
+    		// Apakah user upload gambar?
+    		if ( isset($_FILES['thumbnail']) && $_FILES['thumbnail']['size'] > 0 )
+    		{
+    			// Konfigurasi folder upload & file yang diijinkan
+    			// Jangan lupa buat folder uploads di dalam ci3-course
+    			$config['upload_path']          = './img/';
+    	        $config['allowed_types']        = 'gif|jpg|png';
+    	        $config['max_size']             = 2048;
+    	        $config['max_width']            = 1000;
+    	        $config['max_height']           = 2000;
+    	        // Load library upload
+    	        $this->load->library('upload', $config);
+    	        // Apakah file berhasil diupload?
+    	        if ( ! $this->upload->do_upload('thumbnail'))
+    	        {
+    	        	$data['upload_error'] = $this->upload->display_errors();
+    	        	$post_image = '';
+    	        	// Kita passing pesan error upload ke view supaya user mencoba upload ulang
+    	            $this->load->view('home_view_form', $data); 
+    	        } else {
+    	        	// Hapus file image yang lama jika ada
+    	        	if( !empty($old_image) ) {
+    	        		if ( file_exists( './img/'.$old_image ) ){
+    	        		    unlink( './img/'.$old_image );
+    	        		} else {
+    	        		    echo 'File tidak ditemukan.';
+    	        		}
+    	        	}
+    	        	// Simpan nama file-nya jika berhasil diupload
+    	            $img_data = $this->upload->data();
+    	            $post_image = $img_data['file_name'];
+    	        	
+    	        }
+    		} else {
+    			// User tidak upload gambar, jadi kita kosongkan field ini, atau jika sudah ada, gunakan image sebelumnya
+    			$post_image = ( !empty($old_image) ) ? $old_image : '';
+    		}
+    		$slug = url_title($this->input->post('judul_blog'), 'dash', TRUE);
+	    	$post_data = array(
+	   			'id_cat' => $this->input->post('id'),
+	    	    'judul_blog' => $this->input->post('judul_blog'),
+	    	    'tanggal_blog' => $this->input->post('tanggal_blog'),
+	    	    'content' => $this->input->post('content'),
+	    	    'penulis' => $this->input->post('penulis'),
+	    	    'sumber' => $this->input->post('sumber'),
+	    	    'lokasi_penulisan' => $this->input->post('lokasi_penulisan'),
+	    	    'image' => $post_image,
+	    	);
+	    	// Jika tidak ada error upload gambar, maka kita update datanya 
+	    	if( empty($data['upload_error']) ) {
+	    		// Update artikel sesuai post_data dan id-nya
+		        $this->artikel->update($post_data, $id);
+		        $this->load->view('artikel_success', $data);
+	    	}
+	    }
+}
 }
 
 /* End of file Blog.php */
