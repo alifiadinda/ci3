@@ -40,18 +40,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="home">HOME
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>home">HOME
                 <!-- <span class="sr-only">(current)</span> -->
               </a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="home">ABOUT</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>home">ABOUT</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="blog">BLOG</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>blog">BLOG</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="category">KATEGORI</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>category">KATEGORI</a>
             </li>
           </ul>
         </div>
@@ -59,42 +59,56 @@
     </nav>
 <br><br><br><br>
 
-<div>
+<div> <center>
   <h1><a href='category/create' class='btn btn-sm btn-denger'> Tambah Kategori</a></h1>
-</div>
+</div></center>
 	
 
-    <div class="well well-sm">
-      <?php
-        foreach ($category as $key) :  ?>
-          <div class="row">
-            <div class="col-sm-12 col-md-12">
-             <table>
-             	<tr>
-			          <td><font color="white"> ID CATEGORY </font></td>
-			          <td><font color="white">:</td></font>
-			          <td><font color="white"><?php echo $key->id_cat ?></td></font>
-             	</tr>
-             	<tr>
-             		<td><font color="white">Category Name</td></font>
-          			<td><font color="white">:</td></font>
-          			<td><font color="white"><?php echo $key->cat_name ?></td></font>
+     <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <table id="dt-basic" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kategori Name</th>
+                            <th>Kategori Deskripsi</th>
+                            <th>Tanggal</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($category as $d) : ?>
+                        <tr>
+                            <td><?php echo $d->id_cat ?></td>
+                            <td><?php echo $d->cat_name ?></td>
+                            <td><?php echo $d->cat_description ?></td>
+                            <td><?php echo $d->date_created ?></td>
+                            <td>
+                                <a href="<?php echo base_url('/category/edit/') . $d->id_cat ?>" class="btn btn-sm btn-outline-primary">Edit</a> 
+                                <a href="<?php echo base_url('/category/delete/') . $d->id_cat ?>" class="btn btn-sm btn-outline-danger">Delete</a> 
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+</main>
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery.dataTables.min.css">
+<script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery.dataTables.bootstrap4.min.js"></script>
+<script>
+    jQuery(document).ready(function(){
 
-             	</tr>
-             	<tr>
-             		<td><font color="white">Category Description</td></font>
-          			<td><font color="white">:</td></font>
-          			<td><font color="white"><?php echo $key->cat_description ?></td></font>
-             		  
-             	</tr>
-              <td>
-               <a href='category/Edit/<?php echo $key->id_cat;?>' class='btn btn-sm btn-denger'> Edit </a>     
-                <a href='category/delete/<?php echo $key->id_cat;?>' class='btn btn-sm btn-denger'> Hapus </a>         
-              </td>
-          </div>
-      </div>
-  </div>
-<?php endforeach;?>
+        // Contoh inisialisasi Datatable tanpa konfigurasi apapun
+        // #dt-basic adalah id html dari tabel yang diinisialisasi
+        $('#dt-basic').DataTable();
+    });
+
+</script>
 
 
 <!-- Bootstrap core JavaScript -->

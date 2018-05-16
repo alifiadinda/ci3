@@ -5,7 +5,9 @@ class Category extends CI_Controller {
 	{
 		$this->load->model('category_model');
 		$data['category'] = $this->category_model->get_category();
+		//$this->load->view('header');
 		$this->load->view('cat_view', $data);
+		//$this->load->view('footer');
 	}
 
 	public function create()    
@@ -17,8 +19,10 @@ class Category extends CI_Controller {
  		$this->form_validation->set_rules('cat_name','Nama Kategori','required|is_unique[categories.cat_name]',      
  		array('required' => 'Isi %s donk, jangan kosong.'));
 
-	 	 if($this->form_validation->run() === FALSE){            
+	 	 if($this->form_validation->run() === FALSE){  
+	 	 		$this->load->view('header');          
 		 	 	$this->load->view('cat_create', $data);
+		 	 	$this->load->view('footer');
 		 } else {            
 		 	 	$this->category_model->create_category();            
 		 	 	redirect('category');        
@@ -40,7 +44,9 @@ class Category extends CI_Controller {
 			$this->Category_model->update($id);
 			redirect('Category');
 		}
+		//$this->load->view('header');
 		$this->load->view('update_kategori', $data);
+		//$this->load->view('footer');
 	}
 
 

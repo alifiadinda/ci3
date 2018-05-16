@@ -3,7 +3,7 @@
 <div id="container">
   <div class="one">
     <div class="heading_bg">
-      <h2><strong> SUCCESS !!!</strong></h2>
+      <h2><strong><center> <font color="white">SUCCESS !!!</font></center></strong></h2>
     </div>
   </div>
   <div class="one-half"><br>

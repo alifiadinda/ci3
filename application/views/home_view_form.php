@@ -39,18 +39,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="../../home">HOME
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>home">HOME
                 <!-- <span class="sr-only">(current)</span> -->
               </a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="../../home">ABOUT</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>home">ABOUT</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="../../blog">BLOG</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>blog">BLOG</a>
             </li>
              <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="../../category">Kategori</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>category">Kategori</a>
             </li>
           </ul>
         </div>
@@ -88,6 +88,11 @@
             <label for="title">Lokasi Penulisan</label>
             <input type="text" class="form-control" name="lokasi_penulisan" value="<?php echo set_value('lokasi_penulisan', $artikel->lokasi_penulisan) ?>" required>
             <div class="invalid-feedback">Isi Lokasi</div>
+          </div>
+          <div class="form-group">
+            <label for="title">Penulis</label>
+            <input type="text" class="form-control" name="penulis" value="<?php echo set_value('penulis', $artikel->penulis) ?>" required>
+            <div class="invalid-feedback">Isi Penulis</div>
           </div>
        <div class="form-group">
             <label>Kategori</label>

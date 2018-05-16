@@ -47,10 +47,10 @@
               <a class="nav-link js-scroll-trigger" href="#about">ABOUT</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="blog">BLOG</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>blog">BLOG</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="category">KATEGORI</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>category">KATEGORI</a>
             </li>
           </ul>
         </div>

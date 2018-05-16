@@ -4,23 +4,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Blog extends CI_Controller {
 
 	function __construct(){
+
 		parent::__construct();		
 		
+		//$this->load->helper('MY');
 		$this->load->model('category_model');
+		$this->load->model('artikel');
 	}
 
 	public function index()
 	{
 		$this->load->model('artikel');
-		$data['artikel'] = $this->artikel->get_artikels();
+		$limit_per_page = 2;
+
+		// URI segment untuk mendeteksi "halaman ke berapa" dari URL
+		$start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
+
+		// Dapatkan jumlah data 
+		$total_records = $this->artikel->get_total();
+		
+		if ($total_records > 0) {
+			// Dapatkan data pada halaman yg dituju
+			$data["artikel"] = $this->artikel->get_artikels($limit_per_page, $start_index);
+			
+			// Konfigurasi pagination
+			$config['base_url'] = base_url() . 'blog/index';
+			$config['total_rows'] = $total_records;
+			$config['per_page'] = $limit_per_page;
+			$config['uri_segment'] = 3;
+
+
+			$this->pagination->initialize($config);
+				
+			// Buat link pagination
+			$data['links'] = $this->pagination->create_links();
+		}
+		
+		//$data['artikel'] = $this->artikel->get_artikels();
+		//$this->load->view('header');
 		$this->load->view('home_view', $data);
+		//$this->load->view('footer');
 	}
 
 	public function detail($id)
 	{
 		$this->load->model('artikel');
 		$data['detail'] = $this->artikel->get_single($id);
+		//$this->load->view('header');
 		$this->load->view('home_detail', $data);
+		//$this->load->view('footer');
 	}
 
 		public function tambah()
@@ -51,10 +83,9 @@ class Blog extends CI_Controller {
 				$data['message'] = $upload['error'];
 			}
 		}
-
-	
-
-	$this->load->view('form_tambah', $data);
+		//$this->load->view('header');
+		$this->load->view('form_tambah', $data);
+		//$this->load->view('footer');
 	}
 }
 
@@ -142,7 +173,9 @@ class Blog extends CI_Controller {
 	    	if( empty($data['upload_error']) ) {
 	    		// Update artikel sesuai post_data dan id-nya
 		        $this->artikel->update($post_data, $id);
+		        $this->load->view('header');
 		        $this->load->view('artikel_success', $data);
+		        $this->load->view('footer');
 	    	}
 	    }
 }

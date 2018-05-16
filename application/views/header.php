@@ -39,67 +39,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>home">HOME
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>#">HOME
                 <!-- <span class="sr-only">(current)</span> -->
               </a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>home">ABOUT</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>#about">ABOUT</a>
             </li>
             <li class="nav-item active px-lg-4">
               <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>blog">BLOG</a>
             </li>
             <li class="nav-item active px-lg-4">
               <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>category">KATEGORI</a>
-            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-
-	<div class="container">
-    <?php foreach ($single as $key): ?>
-      <?php
-        echo form_open('category/Edit/'.$key->id_cat, array('enctype'=>'multipart/form-data')); 
-       ?>
-	<table>
-        <tr>
-          <td>Id Kategori</td>
-          <td>:</td>
-          <td><input type="text" name="id" readonly value="<?php echo $key->id_cat; ?>"></td>
-        </tr>
-        <tr>
-          <td>Nama Kategori</td>
-          <td>:</td>
-          <td><input type="text" name="cat_name" value="<?php echo $key->cat_name; ?>"></td>
-        </tr>
-        <tr>
-          <td>Deskripsi</td>
-          <td>:</td>
-          <td><input type="text" name="deskripsi" value="<?php echo $key->cat_description; ?>"></td>
-        </tr>
-        <tr>
-          <td colspan="3"><input type="submit" name="simpan" value="simpan"></td>
-        </tr>
-      </table>
-    <?php endforeach ?>
-    </div>
-
-
-<!-- Bootstrap core JavaScript -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="assets/js/jqBootstrapValidation.js"></script>
-    <script src="assets/js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="assets/js/freelancer.min.js"></script>
-</body>
-</html>
