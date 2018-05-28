@@ -5,9 +5,9 @@ class Category extends CI_Controller {
 	{
 		$this->load->model('category_model');
 		$data['category'] = $this->category_model->get_category();
-		//$this->load->view('header');
+		$this->load->view('header');
 		$this->load->view('cat_view', $data);
-		//$this->load->view('footer');
+		$this->load->view('footer');
 	}
 
 	public function create()    
@@ -44,9 +44,9 @@ class Category extends CI_Controller {
 			$this->Category_model->update($id);
 			redirect('Category');
 		}
-		//$this->load->view('header');
+		$this->load->view('header');
 		$this->load->view('update_kategori', $data);
-		//$this->load->view('footer');
+		$this->load->view('footer');
 	}
 
 

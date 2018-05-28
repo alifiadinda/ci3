@@ -41,22 +41,27 @@ class Blog extends CI_Controller {
 		}
 		
 		//$data['artikel'] = $this->artikel->get_artikels();
-		//$this->load->view('header');
+		$this->load->view('header');
 		$this->load->view('home_view', $data);
-		//$this->load->view('footer');
+		$this->load->view('footer');
 	}
 
 	public function detail($id)
 	{
 		$this->load->model('artikel');
 		$data['detail'] = $this->artikel->get_single($id);
-		//$this->load->view('header');
+		$this->load->view('header');
 		$this->load->view('home_detail', $data);
-		//$this->load->view('footer');
+		$this->load->view('footer');
 	}
 
 		public function tambah()
 	{
+		// Cek login
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
+
 		$this->load->model('artikel');
 		$data['categories'] = $this->category_model->generate_cat_dropdown();
 
@@ -70,7 +75,9 @@ class Blog extends CI_Controller {
 		$this->form_validation->set_rules('input_lokasi_penulisan','lokasi_penulisan','required',array('required' => 'isi %s, '));
 
 		if($this->form_validation->run()==FALSE){
+			$this->load->view('header');
 			$this->load->view('form_tambah',$data);
+			$this->load->view('footer');
 		}
 		else{
 			if ($this->input->post('simpan')) {
@@ -83,9 +90,9 @@ class Blog extends CI_Controller {
 				$data['message'] = $upload['error'];
 			}
 		}
-		//$this->load->view('header');
+		$this->load->view('header');
 		$this->load->view('form_tambah', $data);
-		//$this->load->view('footer');
+		$this->load->view('footer');
 	}
 }
 
@@ -119,7 +126,9 @@ class Blog extends CI_Controller {
 	    // Cek apakah input valid atau tidak
 	    if ($this->form_validation->run() === FALSE)
 	    {
+	    	 $this->load->view('header');
 	        $this->load->view('home_view_form', $data);
+	         $this->load->view('footer');
 	    } else {
     		// Apakah user upload gambar?
     		if ( isset($_FILES['thumbnail']) && $_FILES['thumbnail']['size'] > 0 )
