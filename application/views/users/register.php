@@ -34,6 +34,17 @@
 						<label>Konfirmasi Password</label>
 						<input type="password" class="form-control" name="password2" placeholder="Ulangi Password">
 					</div>
+					<div class="form-group">
+					    <label for="">Pilihan</label>
+					    <div class="form-check">
+					        <input class="form-check-input" type="radio" name="membership" id="reseller" value="2" checked>
+					        <label class="form-check-label" for="reseller">Reseller</label>
+					    </div>
+					     <div class="form-check">
+					        <input class="form-check-input" type="radio" name="membership" id="customer" value="3">
+					        <label class="form-check-label" for="customer">Customer</label>
+					    </div>
+					</div>
 					<button type="submit" class="btn btn-primary btn-block">Daftar</button>
 				<?php echo form_close(); ?>
 			</div>
