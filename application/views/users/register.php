@@ -37,12 +37,12 @@
 					<div class="form-group">
 					    <label for="">Pilihan</label>
 					    <div class="form-check">
-					        <input class="form-check-input" type="radio" name="membership" id="reseller" value="2" checked>
-					        <label class="form-check-label" for="reseller">Reseller</label>
+					        <input class="form-check-input" type="radio" name="membership" id="mainmember" value="2" checked>
+					        <label class="form-check-label" for="reseller">Main Member</label>
 					    </div>
 					     <div class="form-check">
-					        <input class="form-check-input" type="radio" name="membership" id="customer" value="3">
-					        <label class="form-check-label" for="customer">Customer</label>
+					        <input class="form-check-input" type="radio" name="membership" id="membermedium" value="3">
+					        <label class="form-check-label" for="customer">Member Medium</label>
 					    </div>
 					</div>
 					<button type="submit" class="btn btn-primary btn-block">Daftar</button>
