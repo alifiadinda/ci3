@@ -9,7 +9,7 @@
 						$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
 					?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('user/register', array('class' => 'needs-validation', 'novalidate' => '')); ?>
+					<?php echo form_open('users/register', array('class' => 'needs-validation', 'novalidate' => '')); ?>
 					<div class="form-group">
 						<label>Nama Lengkap</label>
 						<input type="text" class="form-control" name="nama" placeholder="Nama Lengkap">
@@ -37,12 +37,16 @@
 					<div class="form-group">
 					    <label for="">Pilihan</label>
 					    <div class="form-check">
+					        <input class="form-check-input" type="radio" name="membership" id="admin" value="1" checked>
+					        <label class="form-check-label" for="admin">Admin</label>
+					    </div>
+					    <div class="form-check">
 					        <input class="form-check-input" type="radio" name="membership" id="mainmember" value="2" checked>
-					        <label class="form-check-label" for="reseller">Main Member</label>
+					        <label class="form-check-label" for="mainmember">Main Member</label>
 					    </div>
 					     <div class="form-check">
 					        <input class="form-check-input" type="radio" name="membership" id="membermedium" value="3">
-					        <label class="form-check-label" for="customer">Member Medium</label>
+					        <label class="form-check-label" for="membermedium">Member Medium</label>
 					    </div>
 					</div>
 					<button type="submit" class="btn btn-primary btn-block">Daftar</button>

@@ -10,10 +10,6 @@
 
    <title>Online Shop Coffe</title>
 
-<div> <center>
-  <h1><a href='blog/tambah' class='btn btn-sm btn-denger'> Tambah Blog</a></h1>
-</div></center>
-
    
 
  <section class="py-5 bg-light">

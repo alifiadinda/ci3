@@ -46,6 +46,15 @@ class Blog extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+		public function artikel()
+	{
+		$this->load->model('artikel');
+		$data['artikel'] = $this->artikel->get_artikels();
+		$this->load->view('header');
+		$this->load->view('artikel', $data);
+		$this->load->view('footer');
+	}
+
 	public function detail($id)
 	{
 		$this->load->model('artikel');
@@ -59,7 +68,7 @@ class Blog extends CI_Controller {
 	{
 		// Cek login
 		if(!$this->session->userdata('logged_in')){
-			redirect('user/login');
+			redirect('users/login');
 		}
 
 		$this->load->model('artikel');

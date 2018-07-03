@@ -47,10 +47,10 @@
               <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>#about">ABOUT</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>blog">BLOG</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>blog/artikel">Artikel</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>category">KATEGORI</a>
+              <a class="nav-link js-scroll-trigger" href="<?php echo base_url() ?>users/dashboard">Dashboard</a>
             </li>
           </ul>
         </div>
@@ -60,8 +60,8 @@
       <?php if(!$this->session->userdata('logged_in')) : ?>
                     <center>
                    <div class="btn-group" role="group" aria-label="Data baru">
-                        <?php echo anchor('user/register', 'Register', array('class' => 'btn btn-outline-light')); ?>
-                        <?php echo anchor('user/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('users/register', 'Register', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('users/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
 
                     </div>
 
@@ -69,10 +69,8 @@
 
                 <?php if($this->session->userdata('logged_in')) : ?>
                     <div class="btn-group" role="group" aria-label="Data baru">
-
-                        <?php echo anchor('blog/tambah', 'Artikel Baru', array('class' => 'btn btn-outline-light')); ?>
-                        <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-outline-light')); ?>
-                        <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
+                  <?php echo anchor('users/register', 'Register', array('class' => 'btn btn-outline-light')); ?>
+                  <?php echo anchor('users/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
                     </div>
                 <?php endif; ?>
 
